@@ -1,28 +1,27 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
-    var gl = canvas.getContext("webgl");
+    var gl = canvas.getContext("experimental-webgl");
 
-    //Vertex Shader
+    // VERTEX SHADER
     var vertexShaderCode = "void main () {" + "}";
 
     var vertexShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShader, vertexShaderCode);
     gl.compileShader(vertexShader);
 
-
-    //Fragment Shader
+    // FRAGMENT SHADER
     var fragmentShaderCode = `
           void main () {
-              
           }
+          
     `;
     var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(fragmentShader, fragmentShaderCode);
     gl.compileShader(fragmentShader);
 
-    //Comparing to C-Programming, we may imagine
-    // that up to this step we have created two object files (.o),
-    // For the vertex and fragment shaders
+    // Comparing to C programming, we my imagine
+    // that up to this step we have created two
+    // object files (.o) for the vertex and fragment shader
 
     var shaderProgram = gl.createProgram();
     gl.attachShader(shaderProgram, vertexShader);
@@ -31,7 +30,6 @@ function main() {
     gl.useProgram(shaderProgram);
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    // RGB and Alpha
-    gl.clear(gl.COLOR_BUFFER_BIT);
 
+    gl.clear(gl.COLOR_BUFFER_BIT);
 }
