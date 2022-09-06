@@ -1,6 +1,6 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
-    var gl = canvas.getContext("experimental-webgl");
+    var gl = canvas.getContext("webgl");
 
     // VERTEX SHADER
     var vertexShaderCode = "void main () {" + "}";
@@ -30,6 +30,7 @@ function main() {
     gl.useProgram(shaderProgram);
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    //R,G,B,Alpha
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 }
