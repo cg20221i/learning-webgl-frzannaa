@@ -1,9 +1,14 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
-    var gl = canvas.getContext("experimental-webgl");
+    var gl = canvas.getContext("webgl");
 
     // VERTEX SHADER
-    var vertexShaderCode = "void main () {" + "}";
+    var vertexShaderCode = ` 
+    void main () {
+        gl_PointSize = 1.0;
+        gl_Position = vech4(0.0, 0.0, 0.0, 1.0);
+    }
+    `;
 
     var vertexShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShader, vertexShaderCode);
@@ -12,6 +17,7 @@ function main() {
     // FRAGMENT SHADER
     var fragmentShaderCode = `
           void main () {
+            gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
           }
           
     `;
@@ -29,7 +35,10 @@ function main() {
     gl.linkProgram(shaderProgram);
     gl.useProgram(shaderProgram);
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(1.0, 0.75, 0.79, 1.0);
+    //R,G,B,Alpha
 
     gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.drawArrays(gl.POINT, 0, 1);
 }
