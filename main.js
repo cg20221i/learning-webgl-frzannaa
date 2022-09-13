@@ -22,14 +22,8 @@ function main() {
         void main () {
             gl_PointSize = 10.0;
             gl_Position = vec4(aPosition, 0.0, 1.0);
-    // VERTEX SHADER
-    var vertexShaderCode = `
-    void main() {
-        gl_PointSize = 10.0;
-        gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
-        // gl_Position is the final destination for storing
-        //  positional data for the rendered vertex
-    };
+    }
+    `;
 
     var vertexShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShader, vertexShaderCode);
@@ -52,8 +46,6 @@ function main() {
     // that up to this step we have created two
     // object files (.o) for the vertex and fragment shader
 
-
-
     var shaderProgram = gl.createProgram();
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
@@ -74,5 +66,4 @@ function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.drawArrays(gl.POINT, 0, 3);
-    gl.drawArrays(gl.POINT, 0, 1);
 }
